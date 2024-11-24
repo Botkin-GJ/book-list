@@ -9,11 +9,13 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { BookRestService } from './services/book-rest.service';
 import { bookList, bookListReducer } from './store/book-list/book-list.reducer';
 import { BookListEffects } from './store/book-list/book-list.effects';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideHttpClient(),
     provideAnimationsAsync(),
     provideStore({[bookList]: bookListReducer}),
     provideEffects([BookListEffects]),
@@ -23,3 +25,4 @@ export const appConfig: ApplicationConfig = {
     BookRestService
   ],
 };
+
