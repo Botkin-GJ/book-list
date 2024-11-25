@@ -48,7 +48,7 @@ describe('BookListEffects', () => {
             expect(effects.loadBooks$).toBeObservable(expected);
         });
 
-        it(`should return ${fromBookListActions.booksLoadingFailed.type} with correct payload`, () => {
+        it(`should return ${fromBookListActions.booksLoadingFailed.type}`, () => {
             const mockError: HttpErrorResponse = new HttpErrorResponse({error: 'Internal Server Error!', status: 500});
             spyOn(effects.bookListRest, 'getBooks').and.returnValue(throwError(() => mockError));
 
@@ -57,6 +57,30 @@ describe('BookListEffects', () => {
             dispatchAction(fromBookListActions.booksRequested());
 
             expect(effects.loadBooks$).toBeObservable(expected);
+        });
+    });
+
+    describe('addBook$', () => {
+        it(`should return ${fromBookListActions.bookAdded.type} with correct payload`, () => {
+            const responseBody: Book = mockBooks[0];
+            spyOn(effects.bookListRest, 'addBook').and.returnValue(of(responseBody));
+
+            const expected = cold('a', {a: fromBookListActions.bookAdded({book: responseBody})});
+
+            dispatchAction(fromBookListActions.bookAdditionRequested({book: mockBooks[0]}));
+
+            expect(effects.addBook$).toBeObservable(expected);
+        });
+
+        it(`should return ${fromBookListActions.booksLoadingFailed.type}`, () => {
+            const mockError: HttpErrorResponse = new HttpErrorResponse({error: 'Internal Server Error!', status: 500});
+            spyOn(effects.bookListRest, 'addBook').and.returnValue(throwError(() => mockError));
+
+            const expected = cold('a', {a: fromBookListActions.bookAdditionFailed() });
+
+            dispatchAction(fromBookListActions.bookAdditionRequested({book: mockBooks[0]}));
+
+            expect(effects.addBook$).toBeObservable(expected);
         });
     });
 });

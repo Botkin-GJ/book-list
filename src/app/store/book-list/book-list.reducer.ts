@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import * as BookListActions from './book-list.actions';
+import * as fromBookListActions from './book-list.actions';
 import { Book, BooksGrouped } from '../../shared/models/book.model';
 
 export const bookList = 'book-list';
@@ -14,9 +14,13 @@ export const initialState: BookListState = {
 
 export const bookListReducer = createReducer(
   initialState,
-  on(BookListActions.booksLoaded, (state, { books }) => ({
+  on(fromBookListActions.booksLoaded, (state, { books }) => ({
     ...state,
     booksGrouped: booksGroupedByDecade(sortBooksByPublishYearDescThenAuthorAsc(books)),
+  })),
+  on(fromBookListActions.bookAdded, (state, { book }) => ({
+    ...state,
+    booksGrouped: insertBookIntoBooksGrouped(book, state.booksGrouped)
   }))
 );
 
@@ -38,4 +42,11 @@ function booksGroupedByDecade(books: Book[]): BooksGrouped {
   });
 
   return booksGroupedByDecade;
+}
+
+function insertBookIntoBooksGrouped(book: Book, booksGrouped: BooksGrouped): BooksGrouped {
+  const decade = Math.floor(book.publishYear/10)*10;
+  const extendedBooksGrouped = structuredClone(booksGrouped);
+  extendedBooksGrouped[decade] = sortBooksByPublishYearDescThenAuthorAsc([...extendedBooksGrouped[decade], book]);
+  return extendedBooksGrouped;
 }

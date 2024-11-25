@@ -21,6 +21,20 @@ export class BookListEffects {
     )
   );
 
+  addBook$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(fromBookListActions.bookAdditionRequested),
+      switchMap((action) =>
+        this.bookListRest.addBook(action.book).pipe(
+          switchMap((addedBook: Book) => {
+            return of(fromBookListActions.bookAdded({book: addedBook}))
+          }),
+          catchError(() => of(fromBookListActions.bookAdditionFailed()))
+        ),
+      ),
+    ),
+  );
+
   constructor(
     readonly actions$: Actions,
     readonly bookListRest: BookRestService
