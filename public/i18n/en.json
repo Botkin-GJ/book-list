@@ -16,5 +16,8 @@
         "DE": "German"
     },
     "ADD_BOOK": "Add a book",
-    "ADD": "Add"
+    "ADD": "Add",
+    "ERROR": {
+        "GENERIC": "Oops something went wrong :("
+    }
 }

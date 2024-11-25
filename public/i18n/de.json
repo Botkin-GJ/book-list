@@ -7,8 +7,8 @@
     "RATINGS": "Bewertungen",
     "OUT_OF": "von {{maxRating}}",
     "TO": "bis",
-    "BC": "v. Chr",
-    "AD": "n. Chr",
+    "BC": "v. Chr.",
+    "AD": "n. Chr.",
     "NO_PUBLICATIONS": "Keine Veröffentlichungen",
     "BOOK_LIST": "Bücherliste",
     "LANGUAGES": {
@@ -16,5 +16,8 @@
         "DE": "Deutsch"
     },
     "ADD_BOOK": "Füge ein Buch hinzu",
-    "ADD": "Hinzufügen"
+    "ADD": "Hinzufügen",
+    "ERROR": {
+        "GENERIC": "Ups irgendwas ist schiefgegangen :("
+    }
 }

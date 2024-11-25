@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -11,6 +11,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideBookListMockStore } from '../../shared/testing/mocks/book-list-store.mock.model';
 import { Book } from '../../shared/models/book.model';
 import { mockBooks } from '../../shared/testing/mocks/book.mock.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('BookListEffects', () => {
     let actions$ = new Observable<Action>();
@@ -19,6 +20,9 @@ describe('BookListEffects', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [
+                TranslateModule.forRoot()
+            ],
             providers: [
                BookListEffects,
                provideMockActions(() => actions$),
@@ -94,6 +98,26 @@ describe('BookListEffects', () => {
 
             expect(effects.addBook$).toBeObservable(expected);
             expect(mockPayload.onSuccessFn).toHaveBeenCalled();
+        });
+    });
+
+    describe('showError$', () => {
+        const actions = [
+            fromBookListActions.bookAdditionFailed,
+            fromBookListActions.booksLoadingFailed,
+        ];
+
+        actions.forEach(action => {
+            it(`should open snackBar for ${action.type}`, () => {
+                const expectedEmit = cold('a', {a: action()});
+                const spy = spyOn(effects.matSnackBar, 'open');
+    
+                dispatchAction(action());
+
+                expect(effects.showError$).toBeObservable(expectedEmit);
+
+                expect(spy).toHaveBeenCalledWith('ERROR.GENERIC', 'CLOSE');
+            });
         });
     });
 });
