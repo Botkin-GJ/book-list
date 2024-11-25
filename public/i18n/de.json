@@ -1,0 +1,11 @@
+{
+    "AUTHOR": "Autor",
+    "CATEGORY": "Kategorie",
+    "PUBLISHED": "Veröffentlicht",
+    "RATINGS": "Bewertungen",
+    "OUT_OF": "von {{maxRating}}",
+    "TO": "bis",
+    "BC": "v. Chr",
+    "AD": "n. Chr",
+    "NO_PUBLICATIONS": "Keine Veröffentlichungen"
+}

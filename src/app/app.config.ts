@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -9,7 +9,9 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { BookRestService } from './services/book-rest.service';
 import { bookList, bookListReducer } from './store/book-list/book-list.reducer';
 import { BookListEffects } from './store/book-list/book-list.effects';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { createTranslateLoader } from './shared/utils/translate-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,15 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({
       maxAge: 25,
     }),
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient],
+        }
+      })
+    ),
     BookRestService
   ],
 };
