@@ -7,5 +7,10 @@
     "TO": "bis",
     "BC": "v. Chr",
     "AD": "n. Chr",
-    "NO_PUBLICATIONS": "Keine Veröffentlichungen"
+    "NO_PUBLICATIONS": "Keine Veröffentlichungen",
+    "BOOK_LIST": "Bücherliste",
+    "LANGUAGES": {
+        "EN": "Englisch",
+        "DE": "Deutsch"
+    }
 }

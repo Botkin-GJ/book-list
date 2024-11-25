@@ -7,5 +7,10 @@
     "TO": "to",
     "BC": "BC",
     "AD": "AC",
-    "NO_PUBLICATIONS": "No publications"
+    "NO_PUBLICATIONS": "No publications",
+    "BOOK_LIST": "Book list",
+    "LANGUAGES": {
+        "EN": "English",
+        "DE": "German"
+    }
 }
