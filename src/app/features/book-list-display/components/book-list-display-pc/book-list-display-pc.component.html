@@ -1,1 +1,47 @@
-<p>book-list-display-pc works!</p>
+@for (bookViewModel of books; track $index) { @if ($index > 0) {
+<mat-divider></mat-divider>
+}
+<section class="book-list-interval">
+  <header>
+    <h4>
+      @if(bookViewModel.from < 0 || bookViewModel.to < 0) {
+        {{ Math.abs(bookViewModel.from) }}
+        {{ (bookViewModel.from >= 0 ? "AD" : "BC") | translate }} -
+        {{ Math.abs(bookViewModel.to) }}
+        {{ (bookViewModel.to >= 0 ? "AD" : "BC") | translate }}
+      } @else {
+        {{ bookViewModel.from }} - {{ bookViewModel.to }}
+      }
+    </h4>
+  </header>
+  <div class="book-list-interval-content">
+    @for (book of bookViewModel.books; track $index) {
+    <mat-card class="book-card" appearance="outlined">
+      <mat-card-header class="book-card-header">
+        {{ book.name }}
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="book-card-content">
+        {{ "AUTHOR" | translate }}: {{ book.author }}<br />
+        {{ "CATEGORY" | translate }}: {{ book.category }}<br />
+        {{ "PUBLISHED" | translate }}: {{ Math.abs(book.publishYear) }}
+        {{ book.publishYear < 0 ? ("BC" | translate) : "" }}
+        @if(book.ratings?.length) {
+        <header class="rating-list-header">{{ "RATINGS" | translate }}</header>
+        <ul class="rating-list">
+          @for (rating of book.ratings; track $index) {
+          <li>
+            {{ rating.source }}: {{ rating.value }}
+            {{ "OUT_OF" | translate : { maxRating: 5 } }}
+          </li>
+          }
+        </ul>
+        }
+      </mat-card-content>
+    </mat-card>
+    } @empty {
+    <span> {{ 'NO_PUBLICATIONS' | translate }} </span>
+    }
+  </div>
+</section>
+}

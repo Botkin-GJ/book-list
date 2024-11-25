@@ -1,0 +1,62 @@
+:host, .book-list-interval, .book-card, .book-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-list-interval {
+    gap: 1rem;
+
+    padding: 1rem 2rem;
+
+    background-color: #fffbff;
+
+    header h4 {
+        width: fit-content;
+        border-bottom: 1px solid  #77777a;
+    }
+}
+
+
+.book-list-interval-content {
+    display: flex;
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.book-card {
+    width: 100%;
+    gap: 0.5rem;
+
+    &-header {
+        font-size: larger;
+        font-weight: 500;
+    }
+
+    &-content {
+
+    }
+}
+
+.rating-list-header {
+    font-size: 1.125rem;
+    font-weight: 425;
+
+    margin-top: 0.5rem;
+}
+
+.rating-list {
+    margin-top: 0.25rem;
+    padding: 0 0.75rem;
+    
+    li {
+        list-style-type: none;
+        font-style: italic;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .book-card {
+        width: 23rem;
+    }
+}
