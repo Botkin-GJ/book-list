@@ -14,8 +14,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'book-list';
-
   constructor(readonly translate: TranslateService) {
     this.translate.setDefaultLang('en');
   }
