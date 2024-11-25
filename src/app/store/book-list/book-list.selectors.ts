@@ -36,14 +36,14 @@ function enrichDecadeGroupsByEmptyDecadeRanges(decadeGroups: DecadeGroup[]): Boo
         const decadeDelta = currentElementDecade - nextElementDecade;
         
         const elements: BooksViewModel[] = [
-            {from: currentElementDecade + 9, to: currentElementDecade, books: element.books}
+            {to: currentElementDecade + 9, from: currentElementDecade, books: element.books}
         ];
         
         if(decadeDelta > 10) {
             elements.push(
                 {
-                    from: currentElementDecade - 1,
-                    to: nextElementDecade + 10,
+                    to: currentElementDecade - 1,
+                    from: nextElementDecade + 10,
                     books: []
                 }
             )}
