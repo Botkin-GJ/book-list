@@ -82,5 +82,18 @@ describe('BookListEffects', () => {
 
             expect(effects.addBook$).toBeObservable(expected);
         });
+
+        it('should call onSuccessFn if when it is present', () => {
+            const responseBody: Book = mockBooks[0];
+            spyOn(effects.bookListRest, 'addBook').and.returnValue(of(responseBody));
+            const mockPayload = {book: responseBody, onSuccessFn: jasmine.createSpy('onSuccessFn')}
+
+            const expected = cold('a', {a: fromBookListActions.bookAdded({book: mockPayload.book})});
+
+            dispatchAction(fromBookListActions.bookAdditionRequested(mockPayload));
+
+            expect(effects.addBook$).toBeObservable(expected);
+            expect(mockPayload.onSuccessFn).toHaveBeenCalled();
+        });
     });
 });

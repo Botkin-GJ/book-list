@@ -1,7 +1,9 @@
 {
+    "TITLE": "Titel",
     "AUTHOR": "Autor",
     "CATEGORY": "Kategorie",
     "PUBLISHED": "Veröffentlicht",
+    "PUBLICATION_YEAR": "Erscheinungjahr",
     "RATINGS": "Bewertungen",
     "OUT_OF": "von {{maxRating}}",
     "TO": "bis",
@@ -12,5 +14,7 @@
     "LANGUAGES": {
         "EN": "Englisch",
         "DE": "Deutsch"
-    }
+    },
+    "ADD_BOOK": "Füge ein Buch hinzu",
+    "ADD": "Hinzufügen"
 }

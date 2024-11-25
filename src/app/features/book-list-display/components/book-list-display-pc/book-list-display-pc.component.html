@@ -1,8 +1,9 @@
-<!-- TODO: Make pretty -->
-<section>
-  <button mat-flat-button (click)="openAddBookDialog()">Add book</button>
+<section class="controls">
+  <button mat-flat-button (click)="openAddBookDialog()">
+    <mat-icon>add_circle</mat-icon>
+    {{ 'ADD_BOOK' | translate }}
+  </button>
 </section>
-<!-- ----------------- -->
 <div class="book-list-display-container">
   @for (bookViewModel of books; track $index) { 
     @if ($index > 0) {

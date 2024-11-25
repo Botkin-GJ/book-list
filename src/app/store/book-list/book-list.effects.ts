@@ -27,6 +27,9 @@ export class BookListEffects {
       switchMap((action) =>
         this.bookListRest.addBook(action.book).pipe(
           switchMap((addedBook: Book) => {
+            if(action.onSuccessFn) {
+              action.onSuccessFn();
+            };
             return of(fromBookListActions.bookAdded({book: addedBook}))
           }),
           catchError(() => of(fromBookListActions.bookAdditionFailed()))

@@ -12,6 +12,7 @@ import { BookListEffects } from './store/book-list/book-list.effects';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { createTranslateLoader } from './shared/utils/translate-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,7 +32,8 @@ export const appConfig: ApplicationConfig = {
           useFactory: (createTranslateLoader),
           deps: [HttpClient],
         }
-      })
+      }),
+      BrowserAnimationsModule
     ),
     BookRestService
   ],

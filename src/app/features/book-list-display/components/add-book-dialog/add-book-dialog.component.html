@@ -1,1 +1,25 @@
-<p>add-book-dialog works!</p>
+<h2 mat-dialog-title>{{ 'ADD_BOOK' | translate }}</h2>
+<mat-dialog-content class="dialog-wrapper">
+    <form class="add-book-form" [formGroup]="addBookForm">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{'TITLE' | translate }}</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>{{'AUTHOR' | translate }}</mat-label>
+            <input formControlName="author" matInput>
+        </mat-form-field>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>{{'CATEGORY' | translate }}</mat-label>
+            <input formControlName="category" matInput>
+        </mat-form-field>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>{{'PUBLICATION_YEAR' | translate }}</mat-label>
+            <input formControlName="publishYear" matInput>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()">{{ 'CLOSE' | translate }}</button>
+    <button mat-flat-button type="submit" [disabled]="!addBookForm.valid" (click)="onSubmit()">{{ 'ADD' | translate }}</button>
+</mat-dialog-actions>

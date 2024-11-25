@@ -1,10 +1,19 @@
-.book-list-display-container, .book-list-interval, .book-card, .book-card-content {
+
+.book-list-display-container, .book-list-interval, .book-card, .book-card-content, .controls {
     display: flex;
     width: 100%;
     flex-direction: column;
 }
 
-.book-list-display-container {
+.controls {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fffbff;
+}
+
+.book-list-display-container, .controls {
     border: 1px solid #f7edff;
     border-radius: 4px;
 }

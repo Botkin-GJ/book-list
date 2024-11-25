@@ -4,11 +4,10 @@ import { BookListDisplayCcComponent } from './book-list-display-cc.component';
 import * as fromBookListActions from '../../../../store/book-list/book-list.actions';
 import { BookListDisplayPcComponent } from '../book-list-display-pc/book-list-display-pc.component';
 import { provideBookListMockStore } from '../../../../shared/testing/mocks/book-list-store.mock.model';
-import { Observable } from 'rxjs';
-import { Action } from '@ngrx/store';
 import { MockStore } from '@ngrx/store/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { hot } from 'jasmine-marbles';
+import { AsyncPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('BookListDisplayCcComponent', () => {
   let component: BookListDisplayCcComponent;
@@ -18,7 +17,10 @@ describe('BookListDisplayCcComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         BookListDisplayCcComponent,
-        BookListDisplayPcComponent
+        BookListDisplayPcComponent,
+        AsyncPipe,
+        TranslateModule.forRoot(),
+        BrowserAnimationsModule
       ],
       providers: [
         provideBookListMockStore,

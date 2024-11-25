@@ -6,11 +6,12 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBookDialogComponent } from '../add-book-dialog/add-book-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-list-display-pc',
   standalone: true,
-  imports: [MatCardModule, MatDivider, TranslatePipe, MatButtonModule],
+  imports: [MatCardModule, MatDivider, TranslatePipe, MatButtonModule, MatIconModule],
   providers: [],
   templateUrl: './book-list-display-pc.component.html',
   styleUrl: './book-list-display-pc.component.scss',
@@ -21,7 +22,7 @@ export class BookListDisplayPcComponent {
   @Input()
   books: BooksViewModel[] = [];
 
-  constructor(readonly addBookDialog: MatDialog) { }
+  constructor(readonly addBookDialog: MatDialog) {  }
 
   openAddBookDialog(): void {
     const dialogRef = this.addBookDialog.open(AddBookDialogComponent)
