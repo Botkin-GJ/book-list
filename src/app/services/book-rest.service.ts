@@ -10,16 +10,15 @@ export class BookRestService {
 
   private apiUrl = 'https://63c10327716562671870f959.mockapi.io';
   private booksEndpoint = '/books';
+  private booksUrl = `${this.apiUrl}${this.booksEndpoint}`;
 
   constructor(readonly http: HttpClient) { }
 
   getBooks(): Observable<Book[]> {
-    const url = `${this.apiUrl}${this.booksEndpoint}`;
-    return this.http.get<Book[]>(url);
+    return this.http.get<Book[]>(this.booksUrl);
   }
 
   addBook(book: Book): Observable<Book> {
-    const url = `${this.apiUrl}${this.booksEndpoint}`;
-    return this.http.post<Book>(url, book);
+    return this.http.post<Book>(this.booksUrl, book);
   }
 }
