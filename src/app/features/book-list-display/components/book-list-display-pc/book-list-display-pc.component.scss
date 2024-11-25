@@ -1,6 +1,12 @@
-:host, .book-list-interval, .book-card, .book-card-content {
+.book-list-display-container, .book-list-interval, .book-card, .book-card-content {
     display: flex;
+    width: 100%;
     flex-direction: column;
+}
+
+.book-list-display-container {
+    border: 1px solid #f7edff;
+    border-radius: 4px;
 }
 
 .book-list-interval {
@@ -31,10 +37,6 @@
     &-header {
         font-size: larger;
         font-weight: 500;
-    }
-
-    &-content {
-
     }
 }
 
