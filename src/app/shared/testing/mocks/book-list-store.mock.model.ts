@@ -2,7 +2,7 @@ import { provideMockStore } from "@ngrx/store/testing";
 import * as fromBookListReducer from "../../../store/book-list/book-list.reducer";
 
 export const bookListStateMock: fromBookListReducer.BookListState = {
-
+    booksGrouped: {}
 }
 
 export const bookListStoreMock: {'book-list': fromBookListReducer.BookListState} = {

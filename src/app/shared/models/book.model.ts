@@ -10,3 +10,13 @@ export interface Book {
     ratings?: Rating[],
     publishYear: number
 }
+
+export interface BooksGrouped {
+    [decade: string]: Book[] 
+}
+
+export interface BooksViewModel {
+    from: number,
+    to: number
+    books: Book[]
+}
