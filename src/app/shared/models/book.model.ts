@@ -15,6 +15,11 @@ export interface BooksGrouped {
     [decade: string]: Book[] 
 }
 
+export interface DecadeGroup {
+    decade: number,
+    books: Book[]
+}
+
 export interface BooksViewModel {
     from: number,
     to: number
