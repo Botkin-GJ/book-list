@@ -70,4 +70,64 @@ describe('BookRestService', () => {
       httpTesting.verify();
     });
   });
+
+  describe('addBook', () => {
+    const endpoint = 'https://63c10327716562671870f959.mockapi.io/books';
+
+    it('should call correct endpoint', () => {
+      const expected = endpoint;
+      const books$ = service.addBook(mockBooks[0]);
+      firstValueFrom(books$);
+
+      const req = httpTesting.expectOne(expected);
+
+      req.flush(mockBooks[0]);
+
+      expect(req.request.url).toBe(expected);
+      
+      httpTesting.verify();
+    });
+    
+    it('should use correct req method', () => {
+      const expected = 'POST';
+      const books$ = service.addBook(mockBooks[0]);
+      firstValueFrom(books$);
+
+      const req = httpTesting.expectOne(endpoint);
+
+      req.flush(mockBooks);
+
+      expect(req.request.method).toBe(expected);
+
+      httpTesting.verify();
+    });
+
+    it('should use correct body', () => {
+      const expected = mockBooks[0];
+      const books$ = service.addBook(mockBooks[0]);
+      firstValueFrom(books$);
+
+      const req = httpTesting.expectOne(endpoint);
+
+      req.flush(mockBooks);
+
+      expect(req.request.body).toBe(expected);
+
+      httpTesting.verify();
+    });
+
+    it('should return book', async () => {
+      const expected = mockBooks[0];
+      const books$ = service.addBook(mockBooks[0]);
+      const booksPromise = firstValueFrom(books$);
+
+      const req = httpTesting.expectOne(endpoint);
+
+      req.flush(mockBooks[0]);
+
+      expect(await booksPromise).toEqual(expected);
+
+      httpTesting.verify();
+    });
+  });
 });

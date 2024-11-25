@@ -17,4 +17,9 @@ export class BookRestService {
     const url = `${this.apiUrl}${this.booksEndpoint}`;
     return this.http.get<Book[]>(url);
   }
+
+  addBook(book: Book): Observable<Book> {
+    const url = `${this.apiUrl}${this.booksEndpoint}`;
+    return this.http.post<Book>(url, book);
+  }
 }
