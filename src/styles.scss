@@ -1,4 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+    @include mat.divider-overrides((
+    color:  #bec6dc,
+  ));
+
+  @include mat.snack-bar-overrides((
+    container-color: #ff0000,
+    supporting-text-color: #ffffff,
+    button-color: #ffffff
+  ));
+}
+
+html, body { height: 100%; width: 100%; }
+body { display: flex; flex-direction: column; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  box-sizing: border-box;
+}

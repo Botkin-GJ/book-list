@@ -1,0 +1,23 @@
+{
+    "TITLE": "Titel",
+    "AUTHOR": "Autor",
+    "CATEGORY": "Kategorie",
+    "PUBLISHED": "Veröffentlicht",
+    "PUBLICATION_YEAR": "Erscheinungjahr",
+    "RATINGS": "Bewertungen",
+    "OUT_OF": "von {{maxRating}}",
+    "TO": "bis",
+    "BC": "v. Chr.",
+    "AD": "n. Chr.",
+    "NO_PUBLICATIONS": "Keine Veröffentlichungen",
+    "BOOK_LIST": "Bücherliste",
+    "LANGUAGES": {
+        "EN": "Englisch",
+        "DE": "Deutsch"
+    },
+    "ADD_BOOK": "Füge ein Buch hinzu",
+    "ADD": "Hinzufügen",
+    "ERROR": {
+        "GENERIC": "Ups irgendwas ist schiefgegangen :("
+    }
+}

@@ -1,0 +1,12 @@
+<header>
+    <img src="./library.png" alt="Library Icon picture">
+    <h3>{{ 'BOOK_LIST' | translate}}</h3>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>language</mat-icon>
+    </button>
+</header>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="setLanguage('en')">{{'LANGUAGES.EN' | translate}}</button>
+    <button mat-menu-item (click)="setLanguage('de')">{{'LANGUAGES.DE' | translate}}</button>
+</mat-menu>

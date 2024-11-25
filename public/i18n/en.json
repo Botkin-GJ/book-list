@@ -1,0 +1,23 @@
+{
+    "TITLE": "Title",
+    "AUTHOR": "Author",
+    "CATEGORY": "Category",
+    "PUBLISHED": "Published",
+    "PUBLICATION_YEAR": "Year Published",
+    "RATINGS": "Ratings",
+    "OUT_OF": "out of {{maxRating}}",
+    "TO": "to",
+    "BC": "BC",
+    "AD": "AC",
+    "NO_PUBLICATIONS": "No publications",
+    "BOOK_LIST": "Book List",
+    "LANGUAGES": {
+        "EN": "English",
+        "DE": "German"
+    },
+    "ADD_BOOK": "Add a book",
+    "ADD": "Add",
+    "ERROR": {
+        "GENERIC": "Oops something went wrong :("
+    }
+}

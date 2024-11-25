@@ -1,0 +1,23 @@
+.dialog-wrapper, .add-book-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-book-form {
+    padding: 1rem 0;
+    justify-content: space-between;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 49%;
+}
+
+@media only screen and (max-width: 900px) {
+    .half-width {
+        width: 100%;
+    }
+}
